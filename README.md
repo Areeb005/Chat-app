@@ -50,18 +50,44 @@ The application should now be running on `http://localhost:5173` (or another por
 
 ### Project Structure
 
-- `src/App.jsx`: Main application component
-- `src/store.js`: Redux store configuration
-- `src/chatSlice.js`: Redux slice for chat state management
-- `src/ConversationList.jsx`: Component for displaying conversation list
-- `src/ChatArea.jsx`: Component for displaying chat messages and input
+```
+my-chat-app/
+├── node_modules/
+├── public/
+├── src/
+│   ├── assets/
+│   │   ├── Avatar.png
+│   │   ├── react.svg
+│   │   ├── user2.png
+│   │   ├── user3.png
+│   ├── components/
+│   │   ├── ChatArea.jsx
+│   │   ├── ConversationList.jsx
+│   │   ├── Footer.jsx
+│   │   ├── Navbar.jsx
+│   ├── redux/
+│   │   ├── chatSlice.js
+│   │   ├── store.js
+│   ├── App.jsx
+│   ├── index.css
+│   ├── main.jsx
+├── .eslintrc.cjs
+├── .gitignore
+├── index.html
+├── package-lock.json
+├── package.json
+├── postcss.config.js
+├── README.md
+├── tailwind.config.js
+├── vite.config.js
+```
 
 ### Usage
 
 1. Clone this repository to your local machine.
 2. Follow the "Setting up a Vite + React Project" steps above.
-3. Replace the contents of `src/App.jsx` with the provided `App.js` code.
-4. Create the additional files (`store.js`, `chatSlice.js`, `ConversationList.jsx`, `ChatArea.jsx`) and add the respective code.
+3. Replace the contents of `src/App.jsx` with the provided `App.jsx` code.
+4. Create the additional files (`redux/chatSlice.js`, `redux/store.js`, `components/ConversationList.jsx`, `components/ChatArea.jsx`, `components/Footer.jsx`, `components/Navbar.jsx`) and add the respective code.
 5. Run the development server with `npm run dev`.
 
 ## Built With
