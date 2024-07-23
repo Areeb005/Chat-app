@@ -35,9 +35,9 @@ function App() {
             <Navbar />
 
             <Container maxWidth="lg" sx={{ py: 10 }}>
-              <Grid container sx={{ height: '100vh' }}>
-                <Grid item xs={12} sm={4} md={3}>
-                  <Paper sx={{ height: '100%', overflowY: 'auto', border: 1, borderRight: 0,  borderColor: 'divider', borderRadius: '10px 0px 0px 10px' }}>
+              <Grid container sx={{ height: 'max-content' }}>
+                <Grid item xs={12} sm={4} md={3} sx={{ mb: { xs: 2, sm: 0 } }}>
+                  <Paper sx={{ height: "100%", border: 1, borderRight: 0, borderColor: 'divider', borderRadius: { xs: "10px 10px 10px 10px", sm: '10px 0px 0px 10px' } }}>
                     <ConversationList />
                   </Paper>
                 </Grid>

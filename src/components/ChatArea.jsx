@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Box, Typography, TextField, IconButton, Avatar, Input, styled, Button } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import AttachFileIcon from '@mui/icons-material/AttachFile';
@@ -20,11 +20,7 @@ const VisuallyHiddenInput = styled('input')({
 
 const ChatArea = () => {
 
-    const queryString = window.location.search;
-    const urlParams = new URLSearchParams(queryString);
-    const paramValue = urlParams.get('sender');
-
-
+    const chatAreaRef = useRef(null);
 
     const [newMessage, setNewMessage] = useState('');
     const [newPic, setNewPic] = useState(null);
@@ -33,7 +29,12 @@ const ChatArea = () => {
     const conversation = useSelector(state => state.chat.conversations.find(c => c.id === activeConversation));
     const dispatch = useDispatch();
 
-    console.log(messages);
+
+    // Function to scroll to the bottom
+    const scrollToBottom = () => {
+        chatAreaRef.current?.scrollTo(0, chatAreaRef.current.scrollHeight);
+    };
+
 
     const handleImage = (event) => {
         const file = event.target.files[0];
@@ -53,7 +54,7 @@ const ChatArea = () => {
                 id: Date.now(),
                 conversationId: activeConversation,
                 text: newMessage,
-                sender: paramValue,
+                sender: "me",
                 pic: newPic,
                 timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
             }));
@@ -62,6 +63,11 @@ const ChatArea = () => {
             document.getElementById('pic').value = ""
         }
     };
+
+    useEffect(() => {
+        scrollToBottom()
+    }, [messages])
+
 
     return (
         <Box sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
@@ -74,7 +80,7 @@ const ChatArea = () => {
                     <Typography variant="body2">Active Now</Typography>
                 </Box>
             </Box>
-            <Box sx={{ flexGrow: 1, overflowY: 'auto', p: 2, height: "500px" }}>
+            <Box ref={chatAreaRef} sx={{ flexGrow: 1, overflowY: 'auto', p: 2, height: "500px", }}>
                 {messages.map((message) => (
                     <Box
                         key={message.id}
@@ -90,7 +96,10 @@ const ChatArea = () => {
                                 sx={{
                                     bgcolor: message.sender === 'me' ? 'primary.light' : 'grey.200',
                                     p: 2,
-                                    padding: message.sender === 'me' ? "20px 20px 20px 100px" : "20px 100px 20px 20px",
+                                    padding: {
+                                        xs: 1,
+                                        md: message.sender === 'me' ? "20px 20px 20px 100px" : "20px 100px 20px 20px",
+                                    },
                                     borderRadius: message.sender === 'me' ? "20px 0px 20px 0px" : "0px 20px 0px 20px",
                                 }}
                             >

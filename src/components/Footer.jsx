@@ -15,8 +15,8 @@ const Footer = () => {
             }}
         >
             <Container maxWidth="lg">
-                <Box py={5} sx={{ display: "flex", gap: 15, }}>
-                    <Box sx={{ maxWidth: "25%" }}>
+                <Box py={5} sx={{ display: "flex", flexDirection: { xs: "column ", md: "row" }, justifyContent: "center", alignItems: "center", gap: 15, }}>
+                    <Box sx={{ maxWidth: { xs: "100%", md:"25%"} }}>
                         <Typography variant="body2" paragraph>
                             Lorem ipsum dolor sit amet consectetur. Varius sit nec aliquet semper elit. Ut porttitor varius ultricies tincidunt turpis. Amet sagittis natoque felis in.
                         </Typography>
@@ -25,26 +25,30 @@ const Footer = () => {
                         </Typography>
                         <Box sx={{ display: "flex", gap: 1 }}>
                             <IconButton color="inherit" href="#" sx={{
-                                display: 'flex', width: "max-content", borderRadius: '50%', overflow: 'hidden', bgcolor: 'common.white', m: 0.5, '&:hover': { bgcolor: 'common.white', }}}>
+                                display: 'flex', width: "max-content", borderRadius: '50%', overflow: 'hidden', bgcolor: 'common.white', m: 0.5, '&:hover': { bgcolor: 'common.white', }
+                            }}>
                                 <FacebookIcon sx={{ color: 'primary.main' }} />
                             </IconButton>
                             <IconButton color="inherit" href="#" sx={{
-                                display: 'flex', width: "max-content", borderRadius: '50%', overflow: 'hidden', bgcolor: 'common.white', m: 0.5, '&:hover': { bgcolor: 'common.white', }}}>
+                                display: 'flex', width: "max-content", borderRadius: '50%', overflow: 'hidden', bgcolor: 'common.white', m: 0.5, '&:hover': { bgcolor: 'common.white', }
+                            }}>
                                 <TwitterIcon sx={{ color: 'primary.main' }} />
                             </IconButton>
                             <IconButton color="inherit" href="#" sx={{
-                                display: 'flex', width: "max-content", borderRadius: '50%', overflow: 'hidden', bgcolor: 'common.white', m: 0.5, '&:hover': { bgcolor: 'common.white', }}}>
+                                display: 'flex', width: "max-content", borderRadius: '50%', overflow: 'hidden', bgcolor: 'common.white', m: 0.5, '&:hover': { bgcolor: 'common.white', }
+                            }}>
                                 <FacebookIcon sx={{ color: 'primary.main' }} />
                             </IconButton>
                             <IconButton color="inherit" href="#" sx={{
-                                display: 'flex', width: "max-content", borderRadius: '50%', overflow: 'hidden', bgcolor: 'common.white', m: 0.5, '&:hover': { bgcolor: 'common.white', }}}>
+                                display: 'flex', width: "max-content", borderRadius: '50%', overflow: 'hidden', bgcolor: 'common.white', m: 0.5, '&:hover': { bgcolor: 'common.white', }
+                            }}>
                                 <TwitterIcon sx={{ color: 'primary.main', height: "20px" }} />
                             </IconButton>
                         </Box>
                     </Box>
                     <Grid container spacing={0} gap={4}>
                         {[1, 2, 3, 4].map((item) => (
-                            <Grid item xs={12} md={2} key={item}>
+                            <Grid item xs={4} md={2} key={item}>
                                 <Typography mb={3} variant="h6" gutterBottom>
                                     Company
                                 </Typography>

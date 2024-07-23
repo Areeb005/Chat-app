@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { List, ListItem, ListItemAvatar, ListItemText, Avatar, TextField, InputAdornment } from '@mui/material';
+import { List, ListItem, ListItemAvatar, ListItemText, Avatar, TextField, InputAdornment, Box } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import { useSelector, useDispatch } from 'react-redux';
 import { setActiveConversation } from '../redux/chatSlice';
@@ -36,26 +36,28 @@ const ConversationList = () => {
                         </InputAdornment>
                     ),
                 }}
-                sx={{ m: 2, width: 'calc(100% - 32px)' }}
+                sx={{ m: 2, width: 'calc(100% - 32px)', position: 'sticky' }}
             />
-            <List>
-                {chats.map((conversation) => (
-                    <ListItem
-                        key={conversation.id}
-                        button
-                        onClick={() => dispatch(setActiveConversation(conversation.id))}
-                        sx={{ bgcolor: activeConversation == conversation.id && "primary.light" }}
-                    >
-                        <ListItemAvatar>
-                            <Avatar src={conversation.avatar} alt={conversation.name} />
-                        </ListItemAvatar>
-                        <ListItemText
-                            primary={conversation.name}
-                            secondary={conversation.lastMessage}
-                        />
-                    </ListItem>
-                ))}
-            </List>
+            <Box sx={{ height: { xs: "150px", sm: '100%' }, overflow: 'auto' }} >
+                <List>
+                    {chats.map((conversation) => (
+                        <ListItem
+                            key={conversation.id}
+                            button
+                            onClick={() => dispatch(setActiveConversation(conversation.id))}
+                            sx={{ bgcolor: activeConversation == conversation.id && "primary.light" }}
+                        >
+                            <ListItemAvatar>
+                                <Avatar src={conversation.avatar} alt={conversation.name} />
+                            </ListItemAvatar>
+                            <ListItemText
+                                primary={conversation.name}
+                                secondary={conversation.lastMessage}
+                            />
+                        </ListItem>
+                    ))}
+                </List>
+            </Box >
         </>
     );
 };
